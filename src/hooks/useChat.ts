@@ -31,12 +31,26 @@ export function useChat() {
 
     const lower = trimmed.toLowerCase()
     const isIdentityQuestion = identityTriggers.some((q) => lower.includes(q))
+    const isSiYuyu = lower.includes("si yuyu")
 
     if (isIdentityQuestion) {
       const aiMessage: Message = {
         sender: "ai",
-        text:
-          "Saya adalah asisten AI yang dikembangkan oleh Bachtiar Dwi Pramudi menggunakan model Gemini.",
+        text: "Saya adalah asisten AI yang dikembangkan oleh Bachtiar Dwi Pramudi menggunakan model Gemini.",
+      }
+
+      setTimeout(() => {
+        setMessages((prev) => [...prev, aiMessage])
+        setIsThinking(false)
+      }, 1500)
+
+      return
+    }
+
+    if (isSiYuyu) {
+      const aiMessage: Message = {
+        sender: "ai",
+        text: "tiar sayang enggar mwahhhhh",
       }
 
       setTimeout(() => {
